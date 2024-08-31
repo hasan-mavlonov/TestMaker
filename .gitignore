@@ -1,0 +1,15 @@
+
+# Compiled files
+__pycache__/
+*.py[cod]
+
+# IDE and system files
+.idea/
+.DS_Store
+
+# Logs
+*.log
+
+# Database migrations
+migrations/
+
