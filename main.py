@@ -1,7 +1,12 @@
-# This is a sample Python script.
+from managers.usersmanager import UsersManager
 
-# Press Ctrl+F5 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+
+def register_page() -> None:
+    username = input('Enter your username: ')
+    password = input('Enter your password: ')
+    if not UsersManager(username).check_existence():
+        if UsersManager(username).create_user(password):
+            print('User created successfully')
 
 
 def auth_menu() -> None:
@@ -14,11 +19,10 @@ def auth_menu() -> None:
     if user_input == "1":
         pass
     elif user_input == "2":
-        pass
+        register_page()
     elif user_input == "3":
         pass
 
+
 if __name__ == '__main__':
     auth_menu()
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/

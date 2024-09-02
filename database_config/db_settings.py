@@ -77,15 +77,17 @@ def execute_query(query, params: tuple = None, fetch: str = None):
     """
     try:
         with Database() as db:
-            db.execute(query, params)
-
             if fetch == "one":
-                result = db.cursor.fetchone()
+                result = db.fetchone(query, params)
                 return result if result else None
 
             elif fetch == "all":
-                result = db.cursor.fetchall()
+                result = db.fetchall(query, params)
                 return result if result else []
+
+            else:
+                db.execute(query, params)
+                return None
 
     except psycopg2.Error as e:
         print(f"Error executing query: {e}")
