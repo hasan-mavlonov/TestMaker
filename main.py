@@ -4,13 +4,21 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press F9 to toggle the breakpoint.
+def auth_menu() -> None:
+    text = """
+    1. Login
+    2. Register
+    3. Logout
+    """
+    user_input = input(text)
+    if user_input == "1":
+        pass
+    elif user_input == "2":
+        pass
+    elif user_input == "3":
+        pass
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    auth_menu()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
