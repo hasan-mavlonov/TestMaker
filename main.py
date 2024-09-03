@@ -13,12 +13,18 @@ def create_test(username):
             print('Test created successfully')
 
 
+def get_user_tests(username):
+    user_id = UsersManager(username).get_user_id()
+    if TestManager.read_user_test(user_id):
+        test_page(username)
+
 def test_page(username):
     text = """
     1. Create a test.
     2. See all tests.
-    3. Edit a test.
-    4. Delete a test.  
+    3. See my tests
+    4. Edit a test.
+    5. Delete a test.  
     """
     user_input = input(text)
     if user_input == '1':
@@ -26,14 +32,26 @@ def test_page(username):
     elif user_input == '2':
         TestManager.read_all_tests()
     elif user_input == '3':
+        get_user_tests(username)
+    elif user_input == '4':
         test_name = input('Enter the name of the test: ')
-
+        if TestManager(test_name).check_existence():
+            new_name = input('Enter the new name of the test: ')
+            if TestManager(test_name).change_test_name(new_name):
+                print('Test updated successfully')
+                test_page(username)
+    elif user_input == '5':
+        test_name = input('Enter the name of the test: ')
+        if TestManager(test_name).check_existence():
+            if TestManager(test_name).delete_test():
+                print('Test deleted successfully')
+                test_page(username)
 
 
 def user_page(username):
     text = """
     1. Test | CRUD
-    2. Edit username
+    2. Questions | CRUD
     3. 
     5. Get my id
     """
