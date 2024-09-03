@@ -13,17 +13,35 @@ def create_test(username):
             print('Test created successfully')
 
 
-def user_page(username):
+def test_page(username):
     text = """
     1. Create a test.
     2. See all tests.
     3. Edit a test.
-    4. Delete a test.   
-    5. Get my id
+    4. Delete a test.  
     """
     user_input = input(text)
     if user_input == '1':
         create_test(username)
+    elif user_input == '2':
+        TestManager.read_all_tests()
+    elif user_input == '3':
+        test_name = input('Enter the name of the test: ')
+
+
+
+def user_page(username):
+    text = """
+    1. Test | CRUD
+    2. Edit username
+    3. 
+    5. Get my id
+    """
+    user_input = input(text)
+    if user_input == '1':
+        test_page(username)
+    elif user_input == '2':
+        pass
     elif user_input == '5':
         print(UsersManager(username).get_user_id())
 
