@@ -60,9 +60,20 @@ class TestManager:
             print(e)
             return False
 
+    def check_if_owner(self, user_id):
+        try:
+            params = (user_id,)
+            result = execute_query(READ_USER_TEST, params, fetch='one')
+            for test in result:
+                return True
+            return False
+        except Exception as e:
+            print(e)
+            return False
+
     def delete_test(self):
         try:
-            params = (self.test_name, )
+            params = (self.test_name,)
             result = execute_query(DELETE_TEST, params)
             return True
         except Exception as e:

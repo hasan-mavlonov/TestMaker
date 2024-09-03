@@ -18,6 +18,7 @@ def get_user_tests(username):
     if TestManager.read_user_test(user_id):
         test_page(username)
 
+
 def test_page(username):
     text = """
     1. Create a test.
@@ -35,7 +36,8 @@ def test_page(username):
         get_user_tests(username)
     elif user_input == '4':
         test_name = input('Enter the name of the test: ')
-        if TestManager(test_name).check_existence():
+        user_id = UsersManager(username).get_user_id()
+        if TestManager(test_name).check_if_owner(user_id):
             new_name = input('Enter the new name of the test: ')
             if TestManager(test_name).change_test_name(new_name):
                 print('Test updated successfully')
@@ -47,6 +49,8 @@ def test_page(username):
                 print('Test deleted successfully')
                 test_page(username)
 
+def question_page():
+    pass
 
 def user_page(username):
     text = """
