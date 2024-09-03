@@ -26,4 +26,3 @@ SELECT password FROM users WHERE full_name = %s
 GET_USER_ID = """
 SELECT id FROM users WHERE full_name = %s
 """
-

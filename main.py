@@ -65,6 +65,7 @@ def question_page(username):
         print("The test wasn't found or you don\'t have an access for it!")
         user_page(username)
 
+
 def user_page(username):
     text = """
     1. Tests | CRUD
