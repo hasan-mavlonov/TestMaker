@@ -12,9 +12,9 @@ class UsersManager:
         try:
             hashed_password = hashlib.sha256(password.encode()).hexdigest()
             params = (self.full_name, hashed_password)
-            result = execute_query(queries.usersqueries.CREATE_USER, params)
-            if result is None:
-                return True
+            result = execute_query(queries.usersqueries.CREATE_USER, params, fetch='one')
+            print(result)
+            return True
         except Exception as e:
             print(e)
             return False
@@ -47,10 +47,19 @@ class UsersManager:
         try:
             password = hashlib.sha256(password.encode()).hexdigest()
             params = (self.full_name,)
-            result = execute_query(queries.usersqueries.CHECK_PASSWORD, params, fetch="one")
+            result = execute_query(queries.usersqueries.GET_PASSWORD, params, fetch="one")
             for passwords in result:
                 if passwords == password:
                     return True
         except Exception as e:
             print(e)
             return False
+
+    def get_user_id(self):
+        try:
+            params = (self.full_name,)
+            result = execute_query(queries.usersqueries.GET_USER_ID, params, fetch="one")
+            for user_id in result:
+                return user_id
+        except Exception as e:
+            print(e)

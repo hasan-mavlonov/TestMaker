@@ -19,7 +19,11 @@ DELETE FROM users
 WHERE full_name = %s
 """
 
-CHECK_PASSWORD = """
+GET_PASSWORD = """
 SELECT password FROM users WHERE full_name = %s
+"""
+
+GET_USER_ID = """
+SELECT id FROM users WHERE full_name = %s
 """
 
