@@ -18,3 +18,8 @@ DELETE_USER = """
 DELETE FROM users
 WHERE full_name = %s
 """
+
+CHECK_PASSWORD = """
+SELECT password FROM users WHERE full_name = %s
+"""
+

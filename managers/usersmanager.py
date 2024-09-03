@@ -42,3 +42,15 @@ class UsersManager:
         except Exception as e:
             print(e)
             return False
+
+    def check_password(self, password):
+        try:
+            password = hashlib.sha256(password.encode()).hexdigest()
+            params = (self.full_name,)
+            result = execute_query(queries.usersqueries.CHECK_PASSWORD, params, fetch="one")
+            for passwords in result:
+                if passwords == password:
+                    return True
+        except Exception as e:
+            print(e)
+            return False
