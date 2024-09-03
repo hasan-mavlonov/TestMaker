@@ -49,12 +49,25 @@ def test_page(username):
                 print('Test deleted successfully')
                 test_page(username)
 
-def question_page():
-    pass
+
+def question_page(username):
+    test_name = input('Enter the name of the test: ')
+    user_id = UsersManager(username).get_user_id()
+    if TestManager(test_name).check_if_owner(user_id):
+        text = """
+        1. Create a question
+        2. See all question from the test
+        3. Edit a question
+        4. Delete a question
+        """
+        user_input = input(text)
+    else:
+        print("The test wasn't found or you don\'t have an access for it!")
+        user_page(username)
 
 def user_page(username):
     text = """
-    1. Test | CRUD
+    1. Tests | CRUD
     2. Questions | CRUD
     3. 
     5. Get my id

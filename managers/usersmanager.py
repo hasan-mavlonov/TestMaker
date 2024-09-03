@@ -1,5 +1,4 @@
 import queries.usersqueries
-from queries.usersqueries import *
 from database_config.db_settings import execute_query
 import hashlib
 
